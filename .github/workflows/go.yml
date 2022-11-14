@@ -4,8 +4,8 @@
 name: Go
 
 on:
-  push:
-    branches: [ "*" ]
+  # push:
+  #   branches: [ "*" ]
   pull_request:
     branches: [ "*" ]
 
@@ -40,7 +40,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go_version: ['1.19', '>=1.19', "<=1.19"]
         os: [ubuntu-latest, ubuntu-18.04]
     steps:
     - uses: actions/checkout@v3
