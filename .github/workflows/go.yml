@@ -40,7 +40,7 @@ jobs:
   build:
     needs: test
     
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [ubuntu-latest, ubuntu-18.04]
@@ -54,6 +54,12 @@ jobs:
     
     - name: Build
       run: go build -v main.go
+      
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.1
+      with:
+        name: programWithGo
+        path: main
   
   docker: 
     needs: build
