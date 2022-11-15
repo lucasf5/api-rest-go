@@ -4,8 +4,8 @@
 name: Go
 
 on:
-  push:
-    branches: [ "*" ]
+  # push:
+  #   branches: [ "*" ]
   pull_request:
     branches: [ "*" ]
 
@@ -37,7 +37,10 @@ jobs:
   build:
     needs: test
     
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-18.04]
     steps:
     - uses: actions/checkout@v3
     
